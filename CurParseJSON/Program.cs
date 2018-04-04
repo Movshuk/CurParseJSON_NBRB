@@ -38,7 +38,7 @@ namespace CurParseJSON
          return arrObj;
       }
 
-      // поиск самого длинного поля среди полей Наименование
+      // поиск самого длинного поля среди полей
       static List<int> LongPosString(List<Currency> myCur)
       {
          List<int> legthsCol = new List<int>();
@@ -72,8 +72,30 @@ namespace CurParseJSON
          return legthsCol; // возвращаю коллекцию длин полей
       }
 
+      // вывод на экран
+      static void ShowCurRate(List<Currency> myCur, List<int> colecеtColumnLength)
+      {
+         Console.WriteLine("Курсы валют НБ РБ установленные на сегодня: " + DateTime.Now.ToShortDateString());
 
-      
+         // печатается подчеркивающая линия
+         int f1_len = colecеtColumnLength[0] + colecеtColumnLength[1] + colecеtColumnLength[2] + colecеtColumnLength[3] + colecеtColumnLength[4] + colecеtColumnLength[5] + 17;
+
+         for (int i = 0; i < f1_len; i++)
+         {
+            Console.Write("-");
+         }
+         Console.WriteLine();
+
+
+         // печатается набор данных курсов
+         foreach (var i in myCur)
+         {
+            string _template = String.Format("[{{0, {0}}}] [{{1, {1}}}] [{{2, {2}}}] [{{3, {3}}}] [{{4, {4}}}] [{{5, {5}}}]", colecеtColumnLength[0], colecеtColumnLength[1], colecеtColumnLength[2], colecеtColumnLength[3], colecеtColumnLength[4], colecеtColumnLength[5]);
+            Console.WriteLine(_template, i.Cur_ID, i.Date.ToShortDateString(), i.Cur_Abbreviation, i.Cur_Scale, i.Cur_Name, i.Cur_OfficialRate);
+         }
+
+      }
+
 
 
       static void Main(string[] args)
@@ -109,24 +131,8 @@ namespace CurParseJSON
          List<int> colecеtColumnLength = new List<int>();
          colecеtColumnLength.AddRange(LongPosString(myCur));
 
-         Console.WriteLine("Курсы валют НБ РБ установленные на сегодня: " + DateTime.Now.ToShortDateString());
-         
-         // печатается подчеркивающая линия
-         int f1_len = colecеtColumnLength[0] + colecеtColumnLength[1] + colecеtColumnLength[2] + colecеtColumnLength[3] + colecеtColumnLength[4] + colecеtColumnLength[5] + 17;
-
-         for (int i =0; i < f1_len; i++)
-         {
-            Console.Write("-");
-         }
-         Console.WriteLine();
-
-
-         // печатается набор данных курсов
-         foreach (var i in myCur)
-         {
-            string _template = String.Format("[{{0, {0}}}] [{{1, {1}}}] [{{2, {2}}}] [{{3, {3}}}] [{{4, {4}}}] [{{5, {5}}}]", colecеtColumnLength[0], colecеtColumnLength[1], colecеtColumnLength[2], colecеtColumnLength[3], colecеtColumnLength[4], colecеtColumnLength[5]);
-            Console.WriteLine(_template, i.Cur_ID, i.Date.ToShortDateString(), i.Cur_Abbreviation, i.Cur_Scale, i.Cur_Name, i.Cur_OfficialRate);
-         }
+         // вызов метода - вывод на печат
+         ShowCurRate(myCur, colecеtColumnLength);
       }
    }
 }
