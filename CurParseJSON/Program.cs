@@ -90,7 +90,9 @@ namespace CurParseJSON
          // печатается набор данных курсов
          foreach (var i in myCur)
          {
+            // формат-шаблон строки, сначала передается в позицию количество символов на строку
             string _template = String.Format("[{{0, {0}}}] [{{1, {1}}}] [{{2, {2}}}] [{{3, {3}}}] [{{4, {4}}}] [{{5, {5}}}]", colecеtColumnLength[0], colecеtColumnLength[1], colecеtColumnLength[2], colecеtColumnLength[3], colecеtColumnLength[4], colecеtColumnLength[5]);
+            // в формат-шаблон подствляются данные с заранее установленной шириной строки
             Console.WriteLine(_template, i.Cur_ID, i.Date.ToShortDateString(), i.Cur_Abbreviation, i.Cur_Scale, i.Cur_Name, i.Cur_OfficialRate);
          }
 
