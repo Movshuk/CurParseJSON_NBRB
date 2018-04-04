@@ -15,5 +15,6 @@ namespace CurParseJSON
          public int Cur_Scale { get; set; }
          public string Cur_Name { get; set; }
          public decimal? Cur_OfficialRate { get; set; }
+
    }
 }
