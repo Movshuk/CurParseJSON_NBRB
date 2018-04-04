@@ -1,16 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.IO;
 using System.Net;
-using System.Text.RegularExpressions;
-using System.Globalization;
-using System.Runtime.Serialization.Json;
-using System.Runtime.Serialization;
 using Newtonsoft.Json;
-using System.Web;
 //using System.ComponentModel.DataAnnotations;
 
 namespace CurParseJSON
@@ -86,7 +78,6 @@ namespace CurParseJSON
          }
          Console.WriteLine();
 
-
          // печатается набор данных курсов
          foreach (var i in myCur)
          {
@@ -95,7 +86,6 @@ namespace CurParseJSON
             // в формат-шаблон подствляются данные с заранее установленной шириной строки
             Console.WriteLine(_template, i.Cur_ID, i.Date.ToShortDateString(), i.Cur_Abbreviation, i.Cur_Scale, i.Cur_Name, i.Cur_OfficialRate);
          }
-
       }
 
 
@@ -135,6 +125,9 @@ namespace CurParseJSON
 
          // вызов метода - вывод на печат
          ShowCurRate(myCur, colecеtColumnLength);
+
+         Console.WriteLine("Press any key...");
+         Console.ReadKey();
       }
    }
 }
